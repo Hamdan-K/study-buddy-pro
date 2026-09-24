@@ -66,7 +66,7 @@ function Dashboard() {
         <div>
           <p className="text-sm font-medium text-muted-foreground">{dateStr}</p>
           <h1 className="mt-1 font-display text-3xl font-bold tracking-tight md:text-4xl">
-            {greeting(now.getHours())}, Scholar
+            {greeting(now ? now.getHours() : new Date().getHours())}, Scholar
           </h1>
           <p className="mt-1 text-sm text-muted-foreground">
             Plan, prioritize, and accomplish your study goals with ease.
