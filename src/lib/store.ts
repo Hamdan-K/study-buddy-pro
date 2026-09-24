@@ -8,7 +8,7 @@ export interface Chapter {
   title: string;
   done: boolean;
   createdAt: number;
-  completedAt?: number;
+  completedAt?: number | undefined;
 }
 
 export interface StudyState {
