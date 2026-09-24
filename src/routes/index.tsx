@@ -38,9 +38,10 @@ function greeting(h: number) {
 
 function Dashboard() {
   const study = useStudy();
-  const [now, setNow] = useState(() => new Date());
+  const [now, setNow] = useState<Date | null>(null);
 
   useEffect(() => {
+    setNow(new Date());
     const t = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(t);
   }, []);
@@ -55,8 +56,8 @@ function Dashboard() {
     (c) => c.done && c.completedAt && todayKey(new Date(c.completedAt)) === todayKey(),
   ).length;
 
-  const timeStr = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" });
-  const dateStr = now.toLocaleDateString([], { weekday: "long", month: "long", day: "numeric" });
+  const timeStr = now ? now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "--:--:--";
+  const dateStr = now ? now.toLocaleDateString([], { weekday: "long", month: "long", day: "numeric" }) : "";
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-6 md:px-8 md:py-8">
